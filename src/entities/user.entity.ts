@@ -1,6 +1,5 @@
 import {Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, OneToMany} from 'typeorm'
-import { Phone } from './phone.entity'
-import { Email } from './email.entity'
+import { Contact } from './contact.entity'
 
 @Entity('users')
 class User{
@@ -14,11 +13,17 @@ class User{
     @Column({ length: 120})
     password: string
 
-    @OneToMany(() => Email, Email => Email.user)
-    emails: Email[]
+    @Column({unique: true})
+    email: string
 
-    @OneToMany(() => Phone, Phone => Phone.user)
-    phones: Phone[]
+    @Column()
+    phone: string
+
+    @OneToMany((type) => Contact, (Contact) => Contact.user,{
+        onDelete: "SET NULL",
+        nullable: true 
+    })
+    contacts: Contact[]
 
     @CreateDateColumn()
     createdAt: Date

@@ -1,12 +1,14 @@
-import { application, Router } from 'express'
+import { Router } from 'express'
 import { createUserController,listUserController, patchUserController, deleteUserController } from '../controllers/users.controllers'
+import { validationMiddleware } from '../middlewares/validation.middleware'
+import { userSchema } from '../schemas/user.schema'
 
 const userRoutes = Router()
 
-userRoutes.post('', createUserController)
-userRoutes.get('', listUserController)
-userRoutes.patch('', patchUserController)
-userRoutes.delete('', deleteUserController)
+userRoutes.post('/users', validationMiddleware(userSchema), createUserController)
+userRoutes.get('/users', listUserController)
+userRoutes.patch('/users/:id', patchUserController)
+userRoutes.delete('/users/:id', deleteUserController)
 
 
 export default userRoutes

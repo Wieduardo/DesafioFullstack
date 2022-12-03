@@ -1,12 +1,16 @@
 interface IUserRequest {
     name:string,
     password:string,
-    emails:string,
-    phones:string
+    email:string,
+    phone:string
 }
 
-interface IUserResponse extends IUserRequest{
+interface IUser{
     id: string,
+    name:string,
+    password:string,
+    email:string,
+    phone:string,
     createdAt: Date
 }
 
@@ -19,5 +23,10 @@ interface IUserUpdate {
     name: string
 }
 
+interface IUserLogin {
+    name: string,
+    password: string
+}
 
-export {IUserRequest, IUserResponse, IUserId, IUserUpdate}
+
+export {IUserRequest, IUser, IUserId, IUserUpdate, IUserLogin}

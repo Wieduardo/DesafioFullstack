@@ -1,21 +1,29 @@
-import users from '../../database'
-import {v4 as uuidv4} from 'uuid'
-import { IUserRequest, IUserResponse } from '../../interfaces/users.interfaces'
+import { User } from '../../entities/user.entity'
+import AppDataSource from '../../data-source'
+import { IUserRequest, IUser } from '../../interfaces/users.interfaces'
+import { AppError } from '../../erros/appError'
 
-const createUserService = ({name, password, emails, phones, createdAt}: IUserRequest): IUserResponse =>{
+const createUserService = async ({name, password, email, phone}: IUserRequest): Promise<IUser> =>{
+    
+    const userRepository = AppDataSource.getRepository(User);
 
-    const newUser: IUserResponse ={
-        id: uuidv4(),
-        name,
-        password,
-        emails,
-        phones,
-        createdAt
+    const userAlreadyExists = await userRepository.findOne({where: {email: email}});
+
+    if(userAlreadyExists){
+        throw new AppError(401,"User already exists");
     }
 
-    users.push(newUser)
+    const user = userRepository.create({
+        name,
+        password,
+        email,
+        phone
+    })
 
-    return newUser
+    await userRepository.save(user);
+
+    return user;
+
 }
 
 export default createUserService

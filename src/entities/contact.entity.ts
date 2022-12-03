@@ -1,16 +1,24 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm'
 import { User } from './user.entity'
 
-@Entity('phones')
-class Phone{
+@Entity('contacts')
+class Contact{
     @PrimaryGeneratedColumn('uuid')
     id: string
 
+    @Column()
+    name: string
+
     @Column({unique: true})
+    email: string
+
+    @Column()
     number: string
 
-    @ManyToOne(() => User)
+    @ManyToOne(() => User, (User) => User.contacts, {
+		onDelete: "SET NULL",
+	})
     user: User
 }
 
-export { Phone }
+export { Contact }

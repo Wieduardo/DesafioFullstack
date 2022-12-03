@@ -1,5 +1,5 @@
-import { IUserResponse } from "../interfaces/users.interfaces";
+import { IUser } from "../interfaces/users.interfaces";
 
-const users: IUserResponse[] =[]
+const users: IUser[] =[]
 
 export default users

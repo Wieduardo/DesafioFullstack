@@ -1,20 +1,13 @@
+import { instanceToPlain } from 'class-transformer'
 import { Request, Response } from 'express'
 import { IUserRequest } from '../interfaces/users.interfaces'
 import createUserService from '../services/users/createUser.service'
 import listUserService from '../services/users/listUser.service'
 
-const createUserController = (req: Request, res: Response) => {
-    try{
-        const { name, password, emails, phones, createdAt}: IUserRequest = req.body
-        const user = createUserService({ name, password, emails, phones, createdAt})
-        return res.status(201).json(user)
-    } catch(error) {
-        if (error instanceof Error){
-            return res.status(400).json({
-                message: error.message
-            })
-        }
-    }
+const createUserController = async (req: Request, res: Response) => {
+   const{name,email,password,phone}: IUserRequest = req.body
+   const user = await createUserService({name, password, email, phone})
+   return res.status(201).json(instanceToPlain(user))
 }
 
 const listUserController = (req: Request, res: Response) => {

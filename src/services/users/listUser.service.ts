@@ -1,7 +1,7 @@
 import users from '../../database'
-import { IUserResponse } from '../../interfaces/users.interfaces'
+import { IUser } from '../../interfaces/users.interfaces'
 
-const listUserService = (): IUserResponse[] =>{
+const listUserService = (): IUser[] =>{
     return users
 }
 
