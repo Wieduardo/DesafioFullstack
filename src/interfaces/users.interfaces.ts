@@ -20,13 +20,23 @@ interface IUserId {
 
 interface IUserUpdate {
     id: string,
-    name: string
+    name?: string,
+    password?:string,
+    email?:string,
+    phone?:string,
+}
+
+interface IPatch{
+    name?: string,
+    password?:string,
+    email?:string,
+    phone?:string,
 }
 
 interface IUserLogin {
-    name: string,
+    email: string,
     password: string
 }
 
 
-export {IUserRequest, IUser, IUserId, IUserUpdate, IUserLogin}
+export {IUserRequest, IUser, IUserId, IUserUpdate, IUserLogin, IPatch}

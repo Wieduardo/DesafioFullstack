@@ -1,26 +1,35 @@
 interface IContactRequest {
     name:string,
-    password:string,
     email:string,
-    phone:string
+    number:string
 }
 
 interface IContact{
     id: string,
     name:string,
     email:string,
-    phone:string
+    number:string
 }
 
 interface IContactId {
     id: string
 }
 
-interface IContactUpdate {
-    id: string,
-    name: string,
-    email: string,
-    phone: string
+interface IUserContactID {
+    id: string
+    contactId: string
 }
 
-export {IContact, IContactId, IContactRequest, IContactUpdate}
+interface IContactUpdate {
+    id: string,
+    name?: string,
+    email?: string,
+    number?: string
+}
+interface IcontactPatch {
+    name?: string,
+    email?: string,
+    number?: string
+}
+
+export {IContact, IContactId, IContactRequest, IContactUpdate, IUserContactID, IcontactPatch}

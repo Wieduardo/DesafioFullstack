@@ -1,14 +1,17 @@
 import { Router } from 'express'
-import { createUserController,listUserController, patchUserController, deleteUserController } from '../controllers/users.controllers'
+import { createUserController,listUserController, patchUserController, deleteUserController, loginUserController, retrieveUserController } from '../controllers/users.controllers'
 import { validationMiddleware } from '../middlewares/validation.middleware'
-import { userSchema } from '../schemas/user.schema'
+import { verifyTokenAuthMiddleware } from '../middlewares/verifyToken.middleware'
+import { userLoginSchema, userPatchSchema, userSchema } from '../schemas/user.schema'
 
 const userRoutes = Router()
 
-userRoutes.post('/users', validationMiddleware(userSchema), createUserController)
-userRoutes.get('/users', listUserController)
-userRoutes.patch('/users/:id', patchUserController)
-userRoutes.delete('/users/:id', deleteUserController)
+userRoutes.post('', validationMiddleware(userSchema), createUserController)
+userRoutes.get('', listUserController)
+userRoutes.patch('', verifyTokenAuthMiddleware, validationMiddleware(userPatchSchema), patchUserController)
+userRoutes.delete('', verifyTokenAuthMiddleware, deleteUserController)
+userRoutes.post('/login', validationMiddleware(userLoginSchema), loginUserController)
+userRoutes.get('/user', verifyTokenAuthMiddleware, retrieveUserController )
 
 
 export default userRoutes
