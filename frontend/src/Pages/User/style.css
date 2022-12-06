@@ -1,0 +1,36 @@
+.main_login{
+    background: url(https://mussumipsum.com/assets/img/bg_home.jpg);
+    min-height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+h1{
+    margin: 0px;
+}
+.conteudo{
+    padding: 50px 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    color: white;
+}
+.button_volta{
+    width: 100px;
+    height: 50px;
+    border: none;
+    border-radius: 4px;
+    color:white;
+    font-weight: bold;
+    font-size: 18px;
+    background-image: linear-gradient(to right, #F30067 , #00D1CD);
+    cursor: pointer;
+}
+.button_volta:hover{
+    transform: scale(1.1);
+    transition: 0.5s;
+    box-shadow: 0px 0px 10px white ;
+}

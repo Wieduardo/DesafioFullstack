@@ -1,0 +1,11 @@
+.main_home{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #444444;
+    min-height: 100vh;
+    color: white;
+}
+.h1{
+    margin:  20px 0px;
+}

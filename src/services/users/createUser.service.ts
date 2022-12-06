@@ -1,6 +1,6 @@
 import { User } from '../../entities/user.entity'
 import AppDataSource from '../../data-source'
-import { IUserRequest, IUser } from '../../interfaces/users.interfaces'
+import { IUser, IUserRequest } from '../../interfaces/users.interfaces'
 import { AppError } from '../../erros/appError'
 
 const createUserService = async ({name, password, email, phone}: IUserRequest): Promise<IUser> =>{
