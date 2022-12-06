@@ -1,0 +1,41 @@
+.vitrine{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 30px;
+}
+.contact_card{
+    width: 300px;
+    height: 150px;
+    background-color: chartreuse;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.contact_card:hover{
+    transform: scale(1.02);
+    transition: 0.4s;
+    background-color: #4E944F;
+    box-shadow: 0px 0px 10px black;
+}
+.contact_content{
+    font-family: 14px;
+    font-weight: bold;
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 10px;
+}
+
+.contact_content > button{
+    height: 50px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.contact_content > button:hover{
+    background-color: chartreuse;
+    transition: 0.3s;
+}

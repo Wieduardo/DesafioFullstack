@@ -8,7 +8,6 @@ interface IUserRequest {
 interface IUser{
     id: string,
     name:string,
-    password:string,
     email:string,
     phone:string,
     createdAt: Date
